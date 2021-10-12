@@ -1,0 +1,11 @@
+# This file is called `zone`. This is what should be read in `lookup.rb`.
+# RECORD TYPE, SOURCE, DESTINATION
+A, ruby-lang.org, 221.186.184.75
+A, google.com, 172.217.163.46
+
+CNAME, www.ruby-lang.org, ruby-lang.org
+CNAME, mail.google.com, google.com
+CNAME, gmail.com, mail.google.com
+
+# An extra CNAME that goes nowhere.
+CNAME, nowhere.example.com, example.com
