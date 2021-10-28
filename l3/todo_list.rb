@@ -20,8 +20,8 @@ class Todo
   end
 
   def to_displayable_string
-    checkbox = @completed ? '[x]' : '[ ]'
-    due_date = due_today? ? '' : @due_date
+    checkbox = @completed ? "[x]" : "[ ]"
+    due_date = due_today? ? "" : @due_date
     "#{checkbox} #{@text} #{due_date}"
   end
 end

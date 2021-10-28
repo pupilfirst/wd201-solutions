@@ -21,14 +21,14 @@ dns_raw = File.readlines("zone")
 def parse_dns(dns_raw)
   dns_raw
     .map { |line| line.strip }
-    .reject {|line| line.empty? }
-    .map {|line| line.split(", ") }
+    .reject { |line| line.empty? }
+    .map { |line| line.split(", ") }
     .filter do |record|
-      record[0] == 'CNAME' || record[0] == 'A'
-    end
+    record[0] == "CNAME" || record[0] == "A"
+  end
     .each_with_object({}) do |record, records|
-      records[record[1]] = { type: record[0], target:record[2] }
-    end
+    records[record[1]] = { type: record[0], target: record[2] }
+  end
 end
 
 def resolve(dns_records, lookup_chain, domain)
