@@ -1,0 +1,53 @@
+a_record_fail: |-
+  We tried to lookup the IP address of a domain that has an A record, and failed.
+
+  %{command_and_output}
+
+  We expected the output to look like `ruby-lang.org => 221.186.184.75`, but we couldn't confirm that.
+cname_record_fail: |-
+  We tried to lookup the IP address of a domain that starts with a CNAME record, and failed.
+
+  %{command_and_output}
+
+  We expected the output to look like `gmail.com => mail.google.com => google.com => 172.217.163.46`, but we couldn't confirm that.
+missing_record_fail: |-
+  We tried to lookup the IP address of a domain that wasn't in the `zone` file, and expected a proper error message, but didn't see any.
+
+  %{command_and_output}
+
+  We expected the output to be an error message like `Error: record not found for foo.com`.
+unlinked_record_fail: |-
+  It looks like the student may have forgotten to handle _unlinked_ records.
+
+  %{command_and_output}
+
+  We expected the output to be an error message like `Error: record not found for example.com`.
+command_and_output: |-
+  This is the command we ran:
+
+  ```bash
+  %{command}
+  ```
+
+  This is the ouput that we got:
+
+  ```
+  %{output}
+  ```
+zone_file: |-
+  This is the contents of the `zone` file that we used for all tests:
+
+  ```
+  # This file is called `zone`. This is what should be read in `lookup.rb`.
+  # RECORD TYPE, SOURCE, DESTINATION
+  A, ruby-lang.org, 221.186.184.75
+  A, google.com, 172.217.163.46
+
+  CNAME, www.ruby-lang.org, ruby-lang.org
+  CNAME, mail.google.com, google.com
+  CNAME, gmail.com, mail.google.com
+
+  # An extra CNAME that goes nowhere.
+  CNAME, nowhere.example.com, example.com
+  ```
+critical_tests_passed: All critical tests have passed.
