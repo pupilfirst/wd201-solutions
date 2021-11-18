@@ -1,0 +1,54 @@
+message_and_backtrace: |-
+  ```
+  %{message}
+  ```
+
+  The first few lines of the following backtrace should show the source of the error:
+
+  ```
+  %{backtrace}
+  ```
+output_and_diff: |-
+  This is the output we saw:
+
+  ```
+  %{output}
+  ```
+
+  This is the _diff_ between what we got, and what we expected to see. This should help you meet this test's expectations:
+
+  ```diff
+  %{diff}
+  ```
+require_error: |-
+  We planned to run some tests by calling `require "./todo.rb"` in our test code, but we ran into an execution error. This is what we got an as error message:
+
+  %{message_and_backtrace}
+
+  Please resolve this error before re-submitting.
+add_error: |-
+  We tried to add a few todos by calling `Todo.add_task` a few times, but we ran into an execution error. This is what we got an as error message:
+
+  %{message_and_backtrace}
+
+  After adding the todos, we were going to `Todo.show_list` method to check the output, but we couldn't confirm the output because of this error.
+add_mismatch: |-
+  After adding a couple of todos by calling `Todo.add_task` a few times, we tested the output of `Todo.show_list`. The output we got wasn't in a shape that we expected.
+
+  %{output_and_diff}
+complete_error: |-
+  After adding a few todos, we tried to mark some of them as complete by calling `Todo.mark_as_complete`, but we ran into an execution error. This is what we got an as error message:
+
+  %{message_and_backtrace}
+
+  After adding them, we planned to check the result again by calling `Todo.show_list`, but we couldn't confirm final output because of this error.
+complete_mismatch: |-
+  After adding a few todos, and marking some of them as complete by calling `Todo.mark_as_complete`, we tested the result by calling `Todo.show_list`. The output we got wasn't in a shape that we expected.
+
+  %{output_and_diff}
+success: |-
+  All tests passed. This was the output that we received:
+
+  ```
+  %{output}
+  ```

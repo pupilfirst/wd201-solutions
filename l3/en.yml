@@ -1,0 +1,28 @@
+execution_error: |-
+  We tried to run the command `ruby todo_list.rb`, but we ran into an execution error. This is what we got an as error message:
+
+  ```
+  %{output}
+  ```
+
+  We expected the output to contain a todo list, but we couldn't confirm that.
+output_mismatch: |-
+  We tried to run the command `ruby todo_list.rb`, but the output we got wasn't in a shape that we expected.
+
+  This is the output we saw:
+
+  ```
+  %{output}
+  ```
+
+  This is the _diff_ between what we got, and what we expected to see. This should help you meet this test's expectations:
+
+  ```diff
+  %{diff}
+  ```
+success: |-
+  Tests passed. This was the output that we received:
+
+  ```
+  %{output}
+  ```

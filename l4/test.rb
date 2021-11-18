@@ -1,15 +1,9 @@
 require "json"
 require "diffy"
 require "./setup_db.rb"
-require "./todo.rb"
+require "../lib/report"
 
-@report = {
-  version: 0,
-  grade: :skip,
-  status: :failure,
-  feedback: [],
-  report: [],
-}
+@report = Report.new(__dir__)
 
 today = Date.today
 
@@ -26,18 +20,24 @@ def capture(&block)
   stdout.string
 end
 
-def dump_report
-  File.write("report.json", JSON.pretty_generate(@report) + "\n")
+def trimmed_backtrace(backtrace)
+  if backtrace.length <= 10
+    backtrace
+  else
+    ["First 10 lines of backtrace:"] + backtrace[0..9]
+  end.join("\n")
 end
 
-def finalize_if_required
-  if @report[:grade] == :reject
-    dump_report
-    exit
-  end
+# First, let's try to require the todo.rb file.
+begin
+  require "./todo.rb"
+rescue => e
+  @report.add_feedback("require_error", message_and_backtrace: @report.translate("message_and_backtrace", message: e.message, backtrace: trimmed_backtrace(e.backtrace)))
+  @report.publish
+  exit
 end
 
-# First, try to add some tasks.
+# With the class loaded, let's try to add some tasks.
 begin
   Todo.add_task(todo_text: "Pay rent", due_in_days: 0)
   Todo.add_task(todo_text: "Service vehicle", due_in_days: 0)
@@ -72,14 +72,15 @@ begin
 
   if stripped_output != expected_output
     diff = Diffy::Diff.new(expected_output, stripped_output)
-    @report[:grade] = :reject
-    @report[:feedback] << { key: "add_mismatch", variables: { output: stripped_output, diff: diff } }
+    @report.add_feedback("add_mismatch", output_and_diff: @report.translate("output_and_diff", output: stripped_output, diff: diff))
   end
 rescue => e
-  @report[:grade] = :reject
-  @report[:feedback] << { key: "add_error", variables: { message: e.message, backtrace: e.backtrace.join("\n") } }
+  @report.add_feedback("add_error", message_and_backtrace: @report.translate("message_and_backtrace", message: e.message, backtrace: trimmed_backtrace(e.backtrace)))
 ensure
-  finalize_if_required
+  if @report.rejected?
+    @report.publish
+    exit
+  end
 end
 
 # Now, let's try to complete some of those tasks.
@@ -116,15 +117,12 @@ begin
 
   unless stripped_output =~ /5\.\s+\[\S\]\s+Submit assignment\s+#{today - 1}.*Due Today.*1\.\s+\[\S\]\s+Pay rent/m
     diff = Diffy::Diff.new(expected_output, stripped_output)
-    @report[:grade] = :reject
-    @report[:feedback] << { key: "complete_mismatch", variables: { output: stripped_output, diff: diff } }
+    @report.add_feedback("complete_mismatch", output_and_diff: @report.translate("output_and_diff", output: stripped_output, diff: diff))
   end
 rescue => e
-  @report[:grade] = :reject
-  @report[:feedback] << { key: "complete_error", variables: { message: e.message, backtrace: e.backtrace.join("\n") } }
+  @report.add_feedback("complete_error", message_and_backtrace: @report.translate("message_and_backtrace", message: e.message, backtrace: trimmed_backtrace(e.backtrace)))
 else
-  @report[:status] = :success
-  @report[:report] << { key: "success", variables: { output: stripped_output } }
+  @report.add_report("success", output: stripped_output)
 ensure
-  dump_report
+  @report.publish
 end

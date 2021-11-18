@@ -40,13 +40,13 @@ class Report
 
     unless ENV["VTA_ENV"] == "production"
       if @report[:feedback].present?
-        puts "## Test Results\n\n"
-        puts @report[:feedback]
+        STDOUT.puts "## Test Results\n\n"
+        STDOUT.puts @report[:feedback]
       end
 
       if @report[:report].present?
-        puts "## Test Report\n\n"
-        puts @report[:report]
+        STDOUT.puts "## Test Report\n\n"
+        STDOUT.puts @report[:report]
       end
     end
   end
