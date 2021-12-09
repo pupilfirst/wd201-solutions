@@ -1,0 +1,9 @@
+incomplete:
+  todo_text: Incomplete todo item
+  due_date: <%= 1.day.from_now.to_s(:db) %>
+  completed: false
+
+complete:
+  todo_text: Completed todo item
+  due_date: <%= 1.day.ago.to_s(:db) %>
+  completed: true

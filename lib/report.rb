@@ -3,7 +3,7 @@ require "active_support/all"
 
 class Report
   def initialize(dir)
-    @dir = dir
+    @dir = File.absolute_path(dir)
 
     @report = {
       version: 0,

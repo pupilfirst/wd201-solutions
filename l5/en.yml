@@ -1,0 +1,15 @@
+success: |-
+  All tests passed. Here's the output:
+
+  ```
+  %{output}
+  ```
+failure: |-
+  When we ran the `rails test` command using our test suite, we saw one
+  or more errors. What follows is the output of the `rails test` command.
+  Please go through the output and try to fix the issues that caused these
+  failures.
+
+  ```
+  %{output}
+  ```

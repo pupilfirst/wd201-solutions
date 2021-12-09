@@ -1,0 +1,9 @@
+hari:
+  name: Hari G
+  email: hari@example.com
+  password: password1
+
+mahesh:
+  name: Mahesh K
+  email: mahesh@example.com
+  password: password2
