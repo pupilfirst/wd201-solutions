@@ -12,17 +12,17 @@
 #       Install PostgreSQL and put its /bin directory on your path.
 #
 # Configure Using Gemfile
-# gem 'pg'
+# gem "pg"
 #
 default: &default
-  host: localhost
   adapter: postgresql
   encoding: unicode
   # For details on connection pooling, see Rails configuration guide
   # https://guides.rubyonrails.org/configuring.html#database-pooling
+  pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
+  host: localhost
   username: postgres
   password: postgres
-  pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
 
 development:
   <<: *default
@@ -77,7 +77,7 @@ test:
 # URL environment variable explicitly:
 #
 #   production:
-#     url: <%= ENV['MY_APP_DATABASE_URL'] %>
+#     url: <%= ENV["MY_APP_DATABASE_URL"] %>
 #
 # Read https://guides.rubyonrails.org/configuring.html#configuring-a-database
 # for a full overview on how database connection configuration can be specified.
@@ -86,4 +86,4 @@ production:
   <<: *default
   database: todo_manager_production
   username: todo_manager
-  password: <%= ENV['TODO_MANAGER_DATABASE_PASSWORD'] %>
+  password: <%= ENV["TODO_MANAGER_DATABASE_PASSWORD"] %>
