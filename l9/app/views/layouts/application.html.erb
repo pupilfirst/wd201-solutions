@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>To-do Manager</title>
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+    <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
+    <%= javascript_importmap_tags %>
+  </head>
+  <body>
+    <% flash.each do |type, message| %>
+      <p class="<%= "Flash Flash-#{type}" %>">
+        <%= message %>
+      </p>
+    <% end %>
+    <% if @current_user.present? %>
+      <div class="UserHeader">
+        Hello, <%= @current_user.first_name %>
+        <%= button_to 'Sign Out', session_path, method: :delete, class: 'UserHeader-button' %>
+      </div>
+    <% end %>
+    <%= yield %>
+  </body>
+</html>

@@ -1,0 +1,27 @@
+<h1 class="Header-title">Hello, stranger!</h1>
+<hr>
+<section>
+  <%= form_with url: users_path do |form| %>
+    <div class="Form-group">
+      <%= form.label :first_name, 'First Name', class: "Form-label" %>
+      <%= form.text_field :first_name, class: "Form-input" %>
+    </div>
+    <div class="Form-group">
+      <%= form.label :last_name, 'Last Name', class: "Form-label" %>
+      <%= form.text_field :last_name, class: "Form-input" %>
+    </div>
+    <div class="Form-group">
+      <%= form.label :email, 'Email', class: "Form-label" %>
+      <%= form.email_field :email, class: "Form-input" %>
+    </div>
+    <div class="Form-group">
+      <%= form.label :password, 'Password', class: "Form-label" %>
+      <%= form.password_field :password, class: "Form-input" %>
+    </div>
+    <div class="Form-group">
+      <%= form.submit "Sign up", class: "Form-submit" %>
+    </div>
+  <% end %>
+  <hr>
+  <p>Would you like to <%= link_to 'sign in', new_session_path %> instead?</p>
+</section>

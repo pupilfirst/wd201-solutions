@@ -1,0 +1,72 @@
+hr {
+  border-top: 1px solid darkgray;
+  margin-top: 12px;
+  margin-bottom: 24px;
+}
+
+.Header-title {
+  font-size: 32px;
+  margin-bottom: 24px;
+  color: darkgray;
+}
+
+.Form-group {
+  margin-top: 18px;
+}
+
+.Form-label {
+  font-size: 14px;
+  display: block;
+}
+
+.Form-input {
+  margin-top: 6px;
+  border: 1px solid lightgray;
+  border-radius: 4px;
+  padding: 8px;
+  width: 100%;
+}
+
+.Form-submit {
+  font-size: 14px;
+  color: white;
+  background-color: #48bb78;
+  border: 1px solid transparent;
+  border-radius: 4px;
+  padding: 12px;
+  cursor: pointer;
+}
+
+.UserHeader {
+  margin-bottom: 12px;
+  border: 1px solid transparent;
+  border-radius: 4px;
+  padding: 8px;
+  background-color: lightgray;
+  display: flex;
+  justify-content: space-between;
+}
+
+.UserHeader-button {
+  border: 0;
+  padding: 0;
+  text-decoration: underline;
+  cursor: pointer;
+  background-color: transparent;
+}
+
+.Flash {
+  margin-bottom: 12px;
+  border: 1px solid transparent;
+  border-radius: 4px;
+  padding: 8px;
+}
+
+.Flash-notice {
+  background-color: yellowgreen;
+}
+
+.Flash-error {
+  background-color: red;
+  color: white;
+}

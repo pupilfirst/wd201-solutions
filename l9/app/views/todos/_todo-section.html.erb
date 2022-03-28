@@ -1,0 +1,26 @@
+<section class="TodoSection">
+  <div class="TodoSectionTitle">
+    <p class="TodoSectionTitle-text"><%= section_title %></p>
+    <p class="TodoSectionTitle-remainingCount"><%= todos.completed.count %> / <%= todos.count %></p>
+  </div>
+  <ul>
+    <% todos.each do |todo| %>
+      <li class="TodoItem">
+        <label class="TodoItem-container">
+          <%= form_with(url: "/todos/#{todo.id}", method: "put") do %>
+            <%= check_box_tag(:completed, :completed, todo.completed, class: "TodoItem-checkbox", onclick: "this.form.submit()") %>
+          <% end %>
+          <p class="TodoItem-text <%= todo.completed ? 'TodoItem-text--completed': nil %>">
+            <%= todo.todo_text %>
+          </p>
+          <% if show_due_date %>
+            <p class="TodoItem-dueDate"><%= todo.due_date.to_fs(:short) %></p>
+          <% end %>
+          <%= form_with(url: "/todos/#{todo.id}", method: "delete") do %>
+            <%= image_submit_tag("/trashcan.png", alt: "delete", class: "TodoItem-delete") %>
+          <% end %>
+        </label>
+      </li>
+    <% end %>
+  </ul>
+</section>
