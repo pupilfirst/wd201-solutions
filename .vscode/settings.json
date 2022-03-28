@@ -1,5 +1,10 @@
 {
+  "ruby.format": "rufo",
+  "ruby.useLanguageServer": true,
   "[ruby]": {
-    "editor.defaultFormatter": "jnbt.vscode-rufo"
+    "editor.defaultFormatter": "rebornix.ruby"
+  },
+  "[erb]": {
+    "editor.defaultFormatter": "aliariff.vscode-erb-beautify"
   }
 }

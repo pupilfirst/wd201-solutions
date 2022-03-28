@@ -1,0 +1,41 @@
+class TodosController < ApplicationController
+  skip_before_action :verify_authenticity_token, only: [:create, :update]
+  # GET /todos
+  def index
+    render "index"
+  end
+
+  # GET /todos/:id
+  def show
+    id = params[:id]
+    todo = Todo.find(id)
+
+    render plain: todo.to_pleasant_string
+  end
+
+  # GET  /todos/create
+  def create
+    todo_text = params[:todo_text]
+    due_date = Time.zone.parse(params[:due_date])
+
+    new_todo = Todo.create!(
+      todo_text: todo_text,
+      due_date: due_date,
+      completed: false,
+    )
+
+    render plain: "Hey, your new todo has been created with ID #{new_todo.id}"
+  end
+
+  # PATCH /todos/:id
+  def update
+    id = params[:id]
+    completed = params[:completed]
+
+    todo = Todo.find(id)
+    todo.completed = completed
+    todo.save!
+
+    render plain: "Update todo completed status to #{completed}"
+  end
+end
