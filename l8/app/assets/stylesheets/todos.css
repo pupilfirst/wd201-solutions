@@ -114,9 +114,6 @@ body {
 .TodoItem-delete {
   visibility: hidden;
   margin-left: 21px;
-}
-
-.TodoItem-deleteImage {
   height: 14px;
   vertical-align: middle;
 }

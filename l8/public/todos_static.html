@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <link rel="stylesheet" href="reset.css" />
+    <link rel="stylesheet" href="todos.css" />
+
+    <title>Our To-do Management App</title>
+  </head>
+
+  <body>
+    <main class="TodoPageMain">
+      <article>
+        <h1 class="TodoPage-title">My To-do List</h1>
+        <section class="AddTodo">
+          <input class="AddTodo-text" type="text" placeholder="What's next?" />
+          <input class="AddTodo-date" type="date" />
+          <input class="AddTodo-button" type="button" value="Add" />
+        </section>
+
+        <section class="TodoSection">
+          <div class="TodoSectionTitle">
+            <p class="TodoSectionTitle-text">Due Today</p>
+            <p class="TodoSectionTitle-remainingCount">0/4</p>
+          </div>
+
+          <ul class="TodoItem">
+            <li>
+              <label class="TodoItem-container">
+                <input class="TodoItem-checkbox" type="checkbox" />
+                <p class="TodoItem-text">Submit WD 201 project</p>
+                <p class="TodoItem-overdueLabel">Overdue</p>
+                <a class="TodoItem-delete" href="javascript:void(0)">
+                  <img
+                    class="TodoItem-deleteImage"
+                    src="trashcan.png"
+                    alt="Delete todo icon"
+                  />
+                </a>
+              </label>
+            </li>
+          </ul>
+
+          <ul class="TodoItem">
+            <li>
+              <label class="TodoItem-container">
+                <input class="TodoItem-checkbox" type="checkbox" />
+                <p class="TodoItem-text">Call accountant</p>
+                <a class="TodoItem-delete" href="javascript:void(0)">
+                  <img
+                    class="TodoItem-deleteImage"
+                    src="trashcan.png"
+                    alt="Delete todo icon"
+                  />
+                </a>
+              </label>
+            </li>
+          </ul>
+        </section>
+
+        <section class="TodoSection">
+          <div class="TodoSectionTitle">
+            <p class="TodoSectionTitle-text">Due Tomorrow</p>
+            <p class="TodoSectionTitle-remainingCount">0/3</p>
+          </div>
+
+          <ul class="TodoItem">
+            <li>
+              <label class="TodoItem-container">
+                <input class="TodoItem-checkbox" type="checkbox" />
+                <p class="TodoItem-text">Refill groceries</p>
+                <a class="TodoItem-delete" href="javascript:void(0)">
+                  <img
+                    class="TodoItem-deleteImage"
+                    src="trashcan.png"
+                    alt="Delete todo icon"
+                  />
+                </a>
+              </label>
+            </li>
+          </ul>
+        </section>
+
+        <section class="TodoSection">
+          <div class="TodoSectionTitle">
+            <p class="TodoSectionTitle-text">Remaining</p>
+            <p class="TodoSectionTitle-remainingCount">0/3</p>
+          </div>
+
+          <ul class="TodoItem">
+            <li>
+              <label class="TodoItem-container">
+                <input class="TodoItem-checkbox" type="checkbox" />
+                <p class="TodoItem-text">Type something</p>
+                <span class="TodoItem-dueDate">Jan 21</span>
+                <a class="TodoItem-delete" href="javascript:void(0)">
+                  <img
+                    class="TodoItem-deleteImage"
+                    src="trashcan.png"
+                    alt="Delete todo icon"
+                  />
+                </a>
+              </label>
+            </li>
+          </ul>
+
+          <ul class="TodoItem">
+            <li>
+              <label class="TodoItem-container">
+                <input class="TodoItem-checkbox" type="checkbox" />
+                <p class="TodoItem-text">Type something</p>
+                <span class="TodoItem-dueDate">Jan 22</span>
+                <a class="TodoItem-delete" href="javascript:void(0)">
+                  <img
+                    class="TodoItem-deleteImage"
+                    src="trashcan.png"
+                    alt="Delete todo icon"
+                  />
+                </a>
+              </label>
+            </li>
+          </ul>
+
+          <ul class="TodoItem">
+            <li>
+              <label class="TodoItem-container">
+                <input class="TodoItem-checkbox" type="checkbox" />
+                <p class="TodoItem-text">Type something</p>
+                <span class="TodoItem-dueDate">Jan 23</span>
+                <a class="TodoItem-delete" href="javascript:void(0)">
+                  <img
+                    class="TodoItem-deleteImage"
+                    src="trashcan.png"
+                    alt="Delete todo icon"
+                  />
+                </a>
+              </label>
+            </li>
+          </ul>
+        </section>
+      </article>
+    </main>
+  </body>
+</html>
