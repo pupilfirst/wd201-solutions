@@ -1,5 +1,4 @@
 class TodosController < ApplicationController
-  skip_before_action :verify_authenticity_token, only: [:create, :update]
   # GET /todos
   def index
     render "index"
@@ -13,7 +12,7 @@ class TodosController < ApplicationController
     render "todo"
   end
 
-  # GET  /todos/create
+  # POST /todos
   def create
     todo_text = params[:todo_text]
     due_date = Time.zone.parse(params[:due_date])

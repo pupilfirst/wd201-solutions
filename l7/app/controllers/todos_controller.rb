@@ -13,7 +13,7 @@ class TodosController < ApplicationController
     render plain: todo.to_pleasant_string
   end
 
-  # GET  /todos/create
+  # POST /todos
   def create
     todo_text = params[:todo_text]
     due_date = Time.zone.parse(params[:due_date])
