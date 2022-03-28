@@ -9,17 +9,3 @@
 If you look at the solution too early, you're bypassing the learning process which involves a degree of struggle. Also,
 if you're unwilling to face the difficulty of the basic tasks that these assignments present, then the web development
 industry is probably not the right choice for you. Your day-to-day job as a professional programmer will be a lot tougher.
-
-## Format for `report.json`
-
-This is managed by the `Report` class.
-
-```json
-{
-  "version": 0,
-  "grade": "skip/accept/reject",
-  "status": "success/failure",
-  "feedback": "Feedback Markdown to send to the student",
-  "report": "Report Markdown to show to coaches"
-}
-```
