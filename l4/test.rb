@@ -123,6 +123,7 @@ rescue => e
   @report.add_feedback("complete_error", message_and_backtrace: @report.translate("message_and_backtrace", message: e.message, backtrace: trimmed_backtrace(e.backtrace)))
 else
   @report.add_report("success", output: stripped_output)
+  @report.success
 ensure
   @report.publish
 end
