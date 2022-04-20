@@ -8,12 +8,12 @@ expected_output = <<~OUTPUT
 OUTPUT
 
 if data.empty?
-  @report.add_feedback("failure", output: 'Ensure that your submission is having the right shape.')
+  @report.add_report("failure", output: 'VTA failed to run test on the given repo.')
 elsif data.split("\n").last.strip == expected_output.strip
   @report.add_report("success", output: data)
   @report.success
 else
-  @report.add_feedback("failure", output: data)
+  @report.add_report("failure", output: data)
 end
 
 @report.publish
