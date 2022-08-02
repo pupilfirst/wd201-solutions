@@ -31,7 +31,7 @@ end
 # First, let's try to require the todo.rb file.
 begin
   require "./todo.rb"
-rescue => e
+rescue LoadError, StandardError => e
   @report.add_feedback("require_error", message_and_backtrace: @report.translate("message_and_backtrace", message: e.message, backtrace: trimmed_backtrace(e.backtrace)))
   @report.publish
   exit
